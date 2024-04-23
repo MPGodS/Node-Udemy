@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Anatomia CSS</title>
     <style>
-        /* ... */
+      .seletor {
+        color: #fff;
+        font-size: 30px;
+        text-align: center;
+        /* VARIOS CALORES */
+        border: dashed 5px black;
+        font-family: Helvetica, sans-serif;
+        /* FUNÇÕES */
+        width: calc(100% - 40px);
+        background-color: rgb(34, 153, 189);
+      }
+      /* PSEUDO CLASSE */
+      .seletor:hover {
+        background-color: red;
+      }
+
+      /* PSEUDO ELEMENTO */
+      .seletor::first-letter {
+        font-size: 60px;
+        font-weight: bold;
+      }
     </style>
-</head>
 
-<body>
-    <div class="selector">Conteúdo</div>
-</body>
+    <!-- PADRÃO DASH-CASE -->
+  </head>
 
+  <body>
+    <div class="seletor">Conteúdo</div>
+  </body>
 </html>
