@@ -1,26 +1,85 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Position</title>
     <style>
-        /* ... */
-    </style>
-</head>
+      div {
+        font-size: 20px;
+        padding: 10px;
+        border: solid 5px #222;
+        color: white;
+      }
 
-<body>
+      .static {
+        top: 100px;
+        left: 100px;
+        background-color: steelblue;
+      }
+
+      .fixed {
+        position: fixed;
+        bottom: 30px;
+        right: 0px;
+        background-color: coral;
+      }
+
+      /* RELATIVO LEVA EM CONSIDERAÇÃO O ELEMENTO ANTERIOR */
+      .relative1 {
+        position: relative;
+        left: 0px;
+        top: 5px;
+        background-color: green;
+      }
+
+      /* SE BASEA PEL VIEW */
+      .absolute1 {
+        position: absolute;
+        left: 350px;
+        top: 120px;
+        background-color: pink;
+      }
+
+      .relative2 {
+        position: relative;
+        left: 250px;
+        top: 200px;
+        width: 200px;
+        height: 200px;
+        background-color: chartreuse;
+      }
+
+      /* ALINHA-SE COM O PAI POR SER RELATIVE */
+      .absolute2 {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: orange;
+      }
+
+      /* SE MANTEM FIXO NA ROLAGEM DE TELA */
+      .sticky {
+        position: -webkit-sticky; /*SAFARI*/
+        position: sticky;
+        background-color: aquamarine;
+        top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
     <div class="static">Static (Padrão)</div>
     <div class="fixed">Fixed</div>
     <div class="relative1">Relative</div>
     <div class="absolute1">Absolute</div>
 
     <div class="relative2">
-        <div class="absolute2"></div>
+      <div class="absolute2"></div>
     </div>
 
     <div class="sticky">Sticky</div>
-    <p style="padding-bottom: 2000px;">Opa</p>
-</body>
-
+    <p style="padding-bottom: 2000px">Opa</p>
+  </body>
 </html>
