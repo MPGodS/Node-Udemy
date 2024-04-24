@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Especificidade CSS</title>
     <style>
-        /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+      /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+
+      /* 
+        1- REGRAS COM !IMPORTANT
+        2- SELETORES MAIS ESPECIFICOS
+        3- ULTIMA REGRA PROCESSADA (EMPATE)
+        
+        */
+
+      p {
+        background-color: gray;
+      }
+
+      .observacao {
+        background-color: chartreuse;
+        border: dashed 5px;
+        padding: 100px !important;
+      }
+
+      p.observacao {
+        padding: 50px;
+        background: linear-gradient(to right, red, yellow);
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <p class='observacao'>Olha essa observação!!!!</p>
-</body>
-
+  <body>
+    <p class="observacao">Olha essa observação!!!!</p>
+  </body>
 </html>
