@@ -12,45 +12,111 @@
       rel="stylesheet"
     />
     <style>
+      @media (min-width: 679px) {
+        .menu-toggle {
+          display: none;
+        }
+      }
+      @media (max-width: 680px) {
+        .menu {
+          display: none;
+        }
+      }
+      @media (max-width: 910px) {
+        .autenticacao {
+          display: none;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
       body {
         background-color: aliceblue;
+        align-items: center;
         margin: 0;
+        font-family: "Oswald", sans-serif;
       }
       header {
-        height: 150px;
-        border-bottom: solid 2px blue;
+        max-height: 150px;
+        height: auto;
       }
-      li {
-        padding: 5px;
-        font-weight: 500;
-        text-align: center;
-        list-style-type: none;
-        margin: 2px;
+
+      div {
+        display: inline-block;
       }
 
       .cabecalho {
         background-color: black;
+        border-bottom: solid 2px blue;
+        height: 80px;
+        box-sizing: content-box;
+      }
+
+      .logo {
+        height: 80px;
+        padding: 15px;
+      }
+      .logo img {
+        height: 100%;
+      }
+
+      .menu-toggle {
+        float: right;
+        color: white;
+        background-color: #555;
+        border: solid 1px #777;
+        border-radius: 5px;
+        height: 40px;
+        padding: 10px 20px;
+        margin: 20px 15px;
       }
 
       .menu {
         display: inline-block;
+        vertical-align: top;
+        height: 80px;
+        padding: 25px;
+      }
+
+      .menu ul {
+        margin: 0;
+        padding: 0;
+      }
+      .menu li {
+        display: inline-block;
+      }
+
+      .cabecalho a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.3em;
       }
 
       .menu a {
-        text-decoration: none;
+        padding: 15px;
+      }
+
+      .botao {
+        border-radius: 30px;
+        padding: 10px 25px;
+        margin: 10px;
+      }
+      .destaque {
+        background-color: red;
         color: white;
       }
 
-      .autenticacao a {
-        background-color: tomato;
-        border-radius: 10%;
-        padding: 10px;
-        color: white;
-        text-decoration: none;
+      .autenticacao {
+        float: right;
+        height: 80px;
+        padding: 25px;
       }
 
-      li:hover {
+      .menu a:hover,
+      .menu a.selected {
         background-color: cornflowerblue;
+        color: black;
       }
     </style>
   </head>
@@ -88,7 +154,19 @@
     </header>
 
     <script>
-      // ...
+      window.onhashchange = function (e) {
+        // pegar o link apartir da cerquilha
+        const oldURL = e.oldURL.split("#")[1];
+        const newURL = e.newURL.split("#")[1];
+
+        //pega o link novo e o antigo
+        const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`);
+        const newLink = document.querySelector(`.menu a[href='#${newURL}']`);
+
+        // add p selected para manter seleiconado
+        oldLink && oldLink.classList.remove("selected");
+        newLink && newLink.classList.add("selected");
+      };
     </script>
   </body>
 </html>
