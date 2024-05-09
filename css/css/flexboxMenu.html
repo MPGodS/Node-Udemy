@@ -58,7 +58,18 @@
       /* ==================== */
       .cabecalho {
         display: flex;
-        float: inline-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .menu {
+        flex-grow: 5;
+      }
+      .menu ul {
+        display: flex;
+      }
+      .menu li {
+        margin: 0px 10px;
       }
     </style>
   </head>
