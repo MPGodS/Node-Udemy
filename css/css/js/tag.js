@@ -8,6 +8,9 @@ const colors = {
   body: "#25b6da",
   form: "#e4f500",
   padrao: "#ccc",
+  main: "#25f535",
+  footer: "#15c8EE",
+  nav: "#ffee20",
   get(tag) {
     return this[tag] ? this[tag] : this.padrao;
   },
