@@ -75,6 +75,9 @@
   <hr />
 
   <!-- Cores -->
+  <div class="my-1 p-3 bg-primary text-light">12</div>
+  <div class="my-1 p-3 bg-danger text-white">13</div>
+  <div class="my-1 p-3 bg-warning text-success">14</div>
 
   <h1 class="mt-5">
     4. Flex -
@@ -89,6 +92,12 @@
   <hr />
 
   <!-- Flex -->
+  <!--  d-(sm, lg, md)-flex:  pode ser usado como limitador do tamanho da tela -->
+  <div class="d-sm-flex flex-column-reverse p-2">
+    <div class="align-self-end">1</div>
+    <div class="align-self-center">2</div>
+    <div class="align-self-start">3</div>
+  </div>
 
   <h1 class="mt-5">
     5. Imagens -
@@ -103,6 +112,21 @@
   <hr />
 
   <!-- Imagens -->
+  <div class="p-2">
+    <img
+      src="/imgs/img1.png"
+      alt="img1"
+      class="mx-auto d-block"
+      width="400px"
+    />
+    <img src="/imgs/img1.png" alt="img1" class="img-thumbnail" width="400px" />
+    <img
+      src="/imgs/img1.png"
+      alt="img1"
+      class="img-fluid rounded-circle"
+      width="400px"
+    />
+  </div>
 
   <h1 class="mt-5">
     6. Float -
@@ -117,6 +141,10 @@
   <hr />
 
   <!-- Float -->
+
+  <div class="my-1 p-3 float-left">1</div>
+  <div class="my-1 p-3 float-right">2</div>
+  <div class="my-1 p-3 float-md-right float-lg-left">3</div>
 </div>
 
 <style>
