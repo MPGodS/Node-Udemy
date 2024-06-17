@@ -22,6 +22,12 @@ export default function Home() {
       "
       />
       <Navegador texto="Estado" destino="/estado" cor="chartreuse" />
+      <Navegador
+        texto="Integração com API #01"
+        destino="/integracao_1"
+        cor="orange"
+      />
+      <Navegador texto="Conteúdo Estático" destino="/estatico" cor="#fa054a" />
     </div>
   );
 }
