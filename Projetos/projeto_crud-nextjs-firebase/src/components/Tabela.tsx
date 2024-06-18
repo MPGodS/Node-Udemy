@@ -40,6 +40,7 @@ export default function Tabela(props: TabelaProps) {
       <td className="flex justify-center">
         {props.clienteSelecionado ? (
           <button
+            onClick={() => props.clienteSelecionado?.(cliente)}
             className="flex justify-center items-center
                          text-green-500 rounded-full hover:bg-purple-100 p-2 m-1"
           >
@@ -50,6 +51,7 @@ export default function Tabela(props: TabelaProps) {
         )}
         {props.clienteExcluido ? (
           <button
+            onClick={() => props.clienteExcluido?.(cliente)}
             className="flex justify-center items-center
         text-red-500 rounded-full hover:bg-purple-100 p-2 m-1"
           >

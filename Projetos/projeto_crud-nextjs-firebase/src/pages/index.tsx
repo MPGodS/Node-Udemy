@@ -1,20 +1,50 @@
-import { Inter } from "next/font/google";
+import { useEffect, useState } from "react";
+import ColecaoCliente from "../backend/db/ColecaoCliente";
+import Botao from "../components/Botao";
+import Formulario from "../components/Formulario";
 import Layout from "../components/Layout";
 import Tabela from "../components/Tabela";
 import Cliente from "../core/Cliente";
-
-const inter = Inter({ subsets: ["latin"] });
+import ClienteRepositorio from "../core/ClienteRepositorio";
 
 export default function Home() {
-  const clientes = [
-    new Cliente("Matheus", 22, "1"),
-    new Cliente("hadasa", 23, "2"),
-    new Cliente("theusMa", 24, "3"),
-    new Cliente("suetham", 25, "4"),
-    new Cliente("matheuscomTH", 26, "5"),
-  ];
+  const repo: ClienteRepositorio = new ColecaoCliente();
 
-  function clienteSelecionado(cliente: Cliente) {}
+  const [visivel, setVisivel] = useState<"tabela" | "form">("tabela");
+  const [cliente, setCliente] = useState<Cliente>(
+    new Cliente(null, null, null)
+  );
+  const [clientes, setClientes] = useState<Cliente[]>([]);
+
+  useEffect(() => {
+    findAll();
+  }, []);
+
+  function findAll() {
+    repo.findAll().then((clientes) => {
+      setClientes(clientes);
+      setVisivel("tabela");
+    });
+  }
+
+  function clienteSelecionado(cliente: Cliente) {
+    setCliente(cliente);
+    setVisivel("form");
+  }
+  async function clienteExcluido(cliente: Cliente) {
+    await repo.excluir(cliente);
+    findAll();
+  }
+
+  function novoCliente() {
+    setCliente(new Cliente(null, null, null));
+    setVisivel("form");
+  }
+
+  async function salvarCliente(cliente: Cliente) {
+    await repo.salvar(cliente);
+    findAll();
+  }
 
   return (
     <div
@@ -22,10 +52,26 @@ export default function Home() {
     bg-gradient-to-r from-purple-600 to-blue-500  text-white"
     >
       <Layout titulo="Cadastro Livro">
-        <Tabela
-          clientes={clientes}
-          clienteSelecionado={clienteSelecionado}
-        ></Tabela>
+        {visivel === "tabela" ? (
+          <>
+            <div className="flex justify-end">
+              <Botao className="mb-4" cor="blue" onClick={novoCliente}>
+                Novo Cliente
+              </Botao>
+            </div>
+            <Tabela
+              clientes={clientes}
+              clienteSelecionado={clienteSelecionado}
+              clienteExcluido={clienteExcluido}
+            ></Tabela>
+          </>
+        ) : (
+          <Formulario
+            cliente={cliente}
+            clienteMudou={salvarCliente}
+            cancelado={() => setVisivel("tabela")}
+          />
+        )}
       </Layout>
     </div>
   );
